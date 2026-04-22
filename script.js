@@ -43,5 +43,11 @@ function calculateTorque() {
 }
     document.getElementById("left-val").innerText = Math.floor(torqueLeft);
     document.getElementById("right-val").innerText = Math.floor(torqueRight);
+
+    let angle= (torqueRight - torqueLeft) / 100;
+
+    if(angle > 30){ angle = 30;} 
+    if(angle < -30){ angle = -30;}
+    plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
     
