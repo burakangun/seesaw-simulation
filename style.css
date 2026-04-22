@@ -1,8 +1,9 @@
 .simulation-container {
     position:relative;
-    width: 600px;
-    height: 400px;
+    width: 400px;
+    height: 600px;
     margin: 100px auto;
+    border: 4px dashed red;
 }
 
 #pivot {

@@ -1,24 +1,34 @@
 console.log("Ready to go")
 alert("Script is workingg(??).")
+
+const container = document.querySelector(".simulation-container");
 const plank= document.getElementById("plank");
 
 let objects = [];
 
-plank.addEventListener("click",(e)=> {
+container.addEventListener("click",(e)=> {
 
-    const bounds = plank.getBoundingClientRect();
+    const bounds = container.getBoundingClientRect();
     const x = e.clientX- bounds.left;
-    const distance = x-200;
-    const weight = Math.floor(Math.random() * 10) + 1;
 
-    objects.push({weight,distance});
+    const plankStartX = 0;
+    const plankEndX = 400;
 
-    const circle = document.createElement("div");
-    circle.className = "weight-of-object";
+    if(x >= plankStartX && x <= plankEndX){
+        const distance = x-200;
+        const weight = Math.floor(Math.random() * 10) + 1;
 
-    circle.style.left = `${x}px`;
+        objects.push({weight,distance});
 
-    circle.innerText = weight;
-    plank.appendChild(circle);
-    console.log("Daire eklendi: ", {weight, distance});
+        const circle = document.createElement("div");
+        circle.className = "weight-of-object";
+
+        circle.style.left = `${x}px`;
+
+        circle.innerText = weight;
+        plank.appendChild(circle);
+        console.log("Daire eklendi: ", {weight, distance});
+    }
+
+   
 });
