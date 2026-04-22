@@ -50,4 +50,15 @@ function calculateTorque() {
     if(angle < -30){ angle = -30;}
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
+
+const resetButton = document.getElementById("reset-btn");
+resetButton.addEventListener("click", () => {
+    objects=[];
+    plank.innerHTML="";
+    plank.style.transform= "translateX(-50%) rotate(0deg)";
+    document.getElementById("left-val").innerText = "0";
+    document.getElementById("right-val").innerText = "0";
+
+    console.error("Simulation Reset!");
+});
     

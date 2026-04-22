@@ -53,3 +53,20 @@
     margin-bottom:20px;
     font-size: medium;
 }
+
+#reset-btn{
+    display:block;
+    margin: 30px auto;
+    padding: 30px 30px;
+    border-radius:50px;;
+    font-size: medium;
+    background-color: red;
+    color: white;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+#reset-btn:hover{
+    background-color: darkred;
+}
