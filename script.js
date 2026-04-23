@@ -66,6 +66,7 @@ function calculateTorque() {
 
     if(angle > 30){ angle = 30;} 
     if(angle < -30){ angle = -30;}
+    plank.style.transition = "transform 0.4s ease";
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
 
