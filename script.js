@@ -10,6 +10,7 @@ let totalWeightRight = 0;
 window.onload = () => {
     for(let i = 0; i<objects.length; i++) {
         drawCircle(objects[i]);
+        calculateWeight(objects[i]);
     }
 };
 
@@ -19,14 +20,12 @@ container.addEventListener("click",(e)=> {
         const x = e.clientX- bounds.left;
 
         if(x >= 0 && x <= 800){
-            const distance=x-400;
+            let distance=x-400;
+            distance = distance / 20;
             const weight = Math.floor(Math.random() * 10) + 1;
             
-            if (distance<0){ totalWeightLeft += weight; document.getElementById("left-weight-val").innerText = totalWeightLeft; }
-            else if (distance > 0) { totalWeightRight += weight; document.getElementById("right-weight-val").innerText = totalWeightRight; }
-            else { console.warn("Lütfen tahtanın üzerine tıklayın!"); return; }
-            
             const newObject = {weight, distance, x};
+            calculateWeight(newObject);
             objects.push(newObject);
             
             localStorage.setItem("objects", JSON.stringify(objects));
@@ -36,6 +35,11 @@ container.addEventListener("click",(e)=> {
     }
     });
 
+function calculateWeight(object) {
+    if (object.distance<0){ totalWeightLeft += object.weight; document.getElementById("left-weight-val").innerText = totalWeightLeft; }
+    else if (object.distance > 0) { totalWeightRight += object.weight; document.getElementById("right-weight-val").innerText = totalWeightRight; }
+    else { console.warn("Lütfen tahtanın üzerine tıklayın!"); return; }
+}
 function drawCircle(object) {
     const circle = document.createElement("div");
     circle.className = "weight-of-object";
@@ -58,7 +62,7 @@ function calculateTorque() {
     document.getElementById("left-val").innerText = Math.floor(torqueLeft);
     document.getElementById("right-val").innerText = Math.floor(torqueRight);
 
-    let angle= (torqueRight - torqueLeft) / 100;
+    let angle= (torqueRight - torqueLeft) / 10;
 
     if(angle > 30){ angle = 30;} 
     if(angle < -30){ angle = -30;}
@@ -68,11 +72,15 @@ function calculateTorque() {
 
 resetButton.addEventListener("click", () => {
     objects=[];
+    totalWeightLeft=0;
+    totalWeightRight=0;
     plank.innerHTML="";
     plank.style.transform= "translateX(-50%) rotate(0deg)";
     document.getElementById("left-val").innerText = "0";
     document.getElementById("right-val").innerText = "0";
-
+    document.getElementById("left-weight-val").innerText = "0";
+    document.getElementById("right-weight-val").innerText = "0";
+    localStorage.removeItem("objects");
     console.error("Simulation Reset!");
 });
 

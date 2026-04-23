@@ -10,7 +10,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-
+    border-radius:20px;
     width: 20px;
     height: 50px;
     background: gray;
@@ -21,6 +21,7 @@
     position:absolute;
     bottom:50px;
     left:50%;
+    border-radius:20px;;
     transform:translateX(-50%);
     width:800px;
     height:10px;
@@ -92,4 +93,8 @@
     background-color:chocolate;
     border-radius:8px;
     margin-top:20px;
+}
+body {
+    background: #505899;
+    background: linear-gradient(90deg, rgba(80, 88, 153, 1) 0%, rgba(116, 142, 176, 1) 9%, rgba(87, 199, 136, 1) 19%, rgba(93, 197, 139, 1) 25%, rgba(96, 196, 140, 1) 29%, rgba(105, 194, 145, 1) 38%, rgba(33, 163, 46, 1) 60%, rgba(127, 205, 120, 1) 83%, rgba(25, 191, 127, 1) 96%, rgba(201, 185, 34, 1) 100%);
 }
