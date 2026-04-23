@@ -1,9 +1,8 @@
 .simulation-container {
     position:relative;
-    width: 400px;
+    width: 800px;
     height: 600px;
     margin: 100px auto;
-    border: 4px dashed red;
 }
 
 #pivot {
@@ -23,7 +22,7 @@
     bottom:50px;
     left:50%;
     transform:translateX(-50%);
-    width:400px;
+    width:800px;
     height:10px;
     background:blue;
 }
@@ -69,4 +68,18 @@
 }
 #reset-btn:hover{
     background-color: darkred;
+}
+
+#preview-of-weight{
+    position:absolute;
+    width:30px;
+    height:30px;
+    background-color: aqua;
+    border-radius:50%;
+    pointer-events: none;
+    display:none;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: block; 
+    z-index: 100;
 }

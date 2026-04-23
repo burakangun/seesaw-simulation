@@ -1,6 +1,3 @@
-console.log("Ready to go")
-alert("Script is workingg(??).")
-
 const container= document.querySelector(".simulation-container");
 const plank= document.getElementById("plank");
 
@@ -11,8 +8,8 @@ container.addEventListener("click",(e)=> {
         const bounds = container.getBoundingClientRect();
         const x = e.clientX- bounds.left;
 
-        if(x >= 0 && x <= 400){
-            const distance=x-200;
+        if(x >= 0 && x <= 800){
+            const distance=x-400;
             const weight = Math.floor(Math.random() * 10) + 1;
             
             newObject = {weight, distance};
@@ -61,4 +58,16 @@ resetButton.addEventListener("click", () => {
 
     console.error("Simulation Reset!");
 });
-    
+
+const preview=document.getElementById("preview-of-weight");
+container.addEventListener("mousemove", (e) => {
+    const bounds=container.getBoundingClientRect();
+    const X = e.clientX - bounds.left;
+    const Y = e.clientY - bounds.top;
+
+    preview.style.left = X + "px";
+    preview.style.top = Y + "px";
+
+    if(X >= -30 && X <= 830){preview.style.backgroundColor = "blue";}   
+    else {preview.style.backgroundColor = "red";}
+});
