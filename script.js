@@ -2,6 +2,8 @@ const container= document.querySelector(".simulation-container");
 const plank= document.getElementById("plank");
 
 let objects = [];
+let totalWeightLeft= 0;
+let totalWeightRight = 0;
 
 container.addEventListener("click",(e)=> {
     
@@ -11,7 +13,9 @@ container.addEventListener("click",(e)=> {
         if(x >= 0 && x <= 800){
             const distance=x-400;
             const weight = Math.floor(Math.random() * 10) + 1;
-            
+            if (distance<0){ totalWeightLeft += weight; document.getElementById("left-weight-val").innerText = totalWeightLeft; }
+            else if (distance > 0) { totalWeightRight += weight; document.getElementById("right-weight-val").innerText = totalWeightRight; }
+            else { console.warn("Lütfen tahtanın üzerine tıklayın!"); return; }
             newObject = {weight, distance};
             objects.push(newObject);
 

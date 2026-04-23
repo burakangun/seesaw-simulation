@@ -30,8 +30,8 @@
 .weight-of-object {
     position:absolute;
     bottom:10px;
-    width:24px;
-    height:24px;
+    width:32px;
+    height:32px;
     background:red;
     border-radius:50%;
     transform:translate(-50%);
@@ -39,7 +39,7 @@
     align-items:center;
     justify-content: center;
     color:white;
-    font-size:10px;
+    font-size: 15px;
     font-weight:bold;
 }
 
@@ -50,14 +50,14 @@
     background-color: green;
     border-radius: 8px;
     margin-bottom:20px;
-    font-size: medium;
+    font-size: 20px;
 }
 
 #reset-btn{
     display:block;
     margin: 30px auto;
     padding: 30px 30px;
-    border-radius:50px;;
+    border-radius:50px;
     font-size: medium;
     background-color: red;
     color: white;
@@ -82,4 +82,14 @@
     pointer-events: none;
     display: block; 
     z-index: 100;
+}
+
+.weight-display {
+    padding:10px;
+    display:flex;
+    justify-content: space-around;
+    font-size: 20px;
+    background-color:chocolate;
+    border-radius:8px;
+    margin-top:20px;
 }
