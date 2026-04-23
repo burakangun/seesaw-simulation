@@ -1,9 +1,17 @@
 const container= document.querySelector(".simulation-container");
 const plank= document.getElementById("plank");
+const preview=document.getElementById("preview-of-weight");
+const resetButton = document.getElementById("reset-btn");
 
-let objects = [];
+let objects = JSON.parse(localStorage.getItem("objects")) || [];
 let totalWeightLeft= 0;
 let totalWeightRight = 0;
+
+window.onload = () => {
+    for(let i = 0; i<objects.length; i++) {
+        drawCircle(objects[i]);
+    }
+};
 
 container.addEventListener("click",(e)=> {
     
@@ -13,24 +21,29 @@ container.addEventListener("click",(e)=> {
         if(x >= 0 && x <= 800){
             const distance=x-400;
             const weight = Math.floor(Math.random() * 10) + 1;
+            
             if (distance<0){ totalWeightLeft += weight; document.getElementById("left-weight-val").innerText = totalWeightLeft; }
             else if (distance > 0) { totalWeightRight += weight; document.getElementById("right-weight-val").innerText = totalWeightRight; }
             else { console.warn("Lütfen tahtanın üzerine tıklayın!"); return; }
-            newObject = {weight, distance};
+            
+            const newObject = {weight, distance, x};
             objects.push(newObject);
-
-            const circle = document.createElement("div");
-            circle.className = "weight-of-object";
-
-            circle.style.left = `${x}px`;
-
-            circle.innerText = weight;
-            plank.appendChild(circle);
-            console.log("Daire eklendi: ", {weight, distance});
-
+            
+            localStorage.setItem("objects", JSON.stringify(objects));
+            drawCircle(newObject);
+    
             calculateTorque();
     }
     });
+
+function drawCircle(object) {
+    const circle = document.createElement("div");
+    circle.className = "weight-of-object";
+    circle.style.left = `${object.x}px`;
+    circle.innerText = object.weight;
+    plank.appendChild(circle);
+    calculateTorque();
+}
 function calculateTorque() {
     let torqueLeft = 0;
     let torqueRight = 0;
@@ -52,7 +65,7 @@ function calculateTorque() {
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
 }
 
-const resetButton = document.getElementById("reset-btn");
+
 resetButton.addEventListener("click", () => {
     objects=[];
     plank.innerHTML="";
@@ -63,7 +76,6 @@ resetButton.addEventListener("click", () => {
     console.error("Simulation Reset!");
 });
 
-const preview=document.getElementById("preview-of-weight");
 container.addEventListener("mousemove", (e) => {
     const bounds=container.getBoundingClientRect();
     const X = e.clientX - bounds.left;
