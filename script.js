@@ -2,6 +2,7 @@ const container= document.querySelector(".simulation-container");
 const plank= document.getElementById("plank");
 const preview=document.getElementById("preview-of-weight");
 const resetButton = document.getElementById("reset-btn");
+const angleVal = document.getElementById("angle-val");
 
 let objects = JSON.parse(localStorage.getItem("objects")) || [];
 let totalWeightLeft= 0;
@@ -26,6 +27,7 @@ plank.addEventListener("click",(e)=> {
         if(x >= 0 && x <= 800 ){
             let distance=x-400;
             
+            distance = distance / 10;
             const weight = nextWeightVal;
             const newObject = {weight, distance, x};
             
@@ -60,6 +62,7 @@ function drawCircle(object) {
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
     circle.innerText = object.weight;
+    circle.style.fontSize = `${object.weight * 3 + 20}px`;
     plank.appendChild(circle);
     calculateTorque();}
     
@@ -84,6 +87,7 @@ function calculateTorque() {
     if(angle < -30){ angle = -30;}
     plank.style.transition = "transform 0.4s ease";
     plank.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+    angleVal.innerText = Math.floor(angle);
 }
 
 
@@ -93,6 +97,7 @@ resetButton.addEventListener("click", () => {
     totalWeightRight=0;
     plank.innerHTML="";
     plank.style.transform= "translateX(-50%) rotate(0deg)";
+    document.getElementById("angle-val").innerText = "0";
     document.getElementById("left-val").innerText = "0";
     document.getElementById("right-val").innerText = "0";
     document.getElementById("left-weight-val").innerText = "0";

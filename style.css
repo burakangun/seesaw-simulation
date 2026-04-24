@@ -52,13 +52,13 @@
     background-color: #6030b0 ;
     border-radius: 8px;
     margin-bottom:1px;
-    font-size: 22px;
+    font-size: 23px;
 }
 
 #reset-btn{
     display:block;
     margin: 30px auto;
-    padding: 30px 30px;
+    padding: 40px 40px;
     border-radius:50px;
     font-size: medium;
     background-color: red;
@@ -90,8 +90,8 @@
     padding:10px;
     display:flex;
     justify-content: space-around;
-    font-size: 22px;
-    background-color:#6a3aad;
+    font-size: 23px;
+    background-color:#6030b0;
     border-radius:8px;
 }
 body {
@@ -102,9 +102,18 @@ body {
     padding:10px;
     display:flex;
     justify-content: space-around;
-    font-size: 22px;
-    background-color:#6a3aad;
+    font-size: 23px;
+    background-color:#6030b0;
     border-radius:8px;
     margin-top:1px;
 
+}
+.angle {
+    padding:10px;
+    display:flex;
+    justify-content: space-around;
+    font-size: 23px;
+    margin-top:2px;
+    background-color:#6030b0;
+    border-radius:8px;
 }
