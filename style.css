@@ -57,14 +57,13 @@
 
 #reset-btn{
     display:block;
-    margin: 30px auto;
+    margin: -100px auto 20px auto;
     padding: 40px 40px;
-    border-radius:50px;
+    border-radius:50%;
     font-size: medium;
     background-color: red;
     color: white;
     border:none;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
 }
