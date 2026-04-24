@@ -7,11 +7,16 @@ let objects = JSON.parse(localStorage.getItem("objects")) || [];
 let totalWeightLeft= 0;
 let totalWeightRight = 0;
 
+const nextWeight = document.getElementById("next-weight");
+let nextWeightVal= randomizeWeight();
+nextWeight.innerText = nextWeightVal;
+
 window.onload = () => {
     for(let i = 0; i<objects.length; i++) {
         drawCircle(objects[i]);
         calculateWeight(objects[i]);
     }
+    
 };
 
 plank.addEventListener("click",(e)=> {
@@ -20,10 +25,11 @@ plank.addEventListener("click",(e)=> {
         const x = e.clientX- bounds.left;
         if(x >= 0 && x <= 800 ){
             let distance=x-400;
-            distance = distance / 20;
-            const weight = Math.floor(Math.random() * 10) + 1;
             
+            const weight = nextWeightVal;
             const newObject = {weight, distance, x};
+            
+
             calculateWeight(newObject);
             objects.push(newObject);
             
@@ -31,9 +37,15 @@ plank.addEventListener("click",(e)=> {
             drawCircle(newObject);
     
             calculateTorque();
+            nextWeightVal = randomizeWeight();
     }
     });
 
+function randomizeWeight() {
+    let weight = Math.floor(Math.random() * 10) + 1
+    nextWeight.innerText = weight;
+    return weight;
+}
 function calculateWeight(object) {
     if (object.distance<0){ totalWeightLeft += object.weight; document.getElementById("left-weight-val").innerText = totalWeightLeft; }
     else if (object.distance > 0) { totalWeightRight += object.weight; document.getElementById("right-weight-val").innerText = totalWeightRight; }
@@ -43,7 +55,7 @@ function drawCircle(object) {
     const circle = document.createElement("div");
     circle.className = "weight-of-object";
     circle.style.left = `${object.x}px`;
-    
+
     const size = object.weight * 3 + 30;
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
@@ -85,6 +97,8 @@ resetButton.addEventListener("click", () => {
     document.getElementById("right-val").innerText = "0";
     document.getElementById("left-weight-val").innerText = "0";
     document.getElementById("right-weight-val").innerText = "0";
+    nextWeightVal = randomizeWeight();
+    document.getElementById("next-weight").innerText = nextWeightVal;
     localStorage.removeItem("objects");
     console.error("Simulation Reset!");
 });

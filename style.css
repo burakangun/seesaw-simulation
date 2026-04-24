@@ -15,6 +15,7 @@
     height: 50px;
     background: black;
     border-radius: 4px 4px 0 0;
+    
 }
 
 #plank {
@@ -96,4 +97,14 @@
 body {
     background: #505899;
     background: linear-gradient(90deg, rgba(80, 88, 153, 1) 0%, rgba(116, 142, 176, 1) 9%, rgba(87, 199, 136, 1) 19%, rgba(93, 197, 139, 1) 25%, rgba(96, 196, 140, 1) 29%, rgba(105, 194, 145, 1) 38%, rgba(33, 163, 46, 1) 60%, rgba(127, 205, 120, 1) 83%, rgba(25, 191, 127, 1) 96%, rgba(201, 185, 34, 1) 100%);
+}
+.next-weight {
+    padding:10px;
+    display:flex;
+    justify-content: space-around;
+    font-size: 22px;
+    background-color:#6a3aad;
+    border-radius:8px;
+    margin-top:1px;
+
 }
