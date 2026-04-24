@@ -14,12 +14,11 @@ window.onload = () => {
     }
 };
 
-container.addEventListener("click",(e)=> {
+plank.addEventListener("click",(e)=> {
     
-        const bounds = container.getBoundingClientRect();
+        const bounds = plank.getBoundingClientRect();
         const x = e.clientX- bounds.left;
-
-        if(x >= 0 && x <= 800){
+        if(x >= 0 && x <= 800 ){
             let distance=x-400;
             distance = distance / 20;
             const weight = Math.floor(Math.random() * 10) + 1;
@@ -44,10 +43,15 @@ function drawCircle(object) {
     const circle = document.createElement("div");
     circle.className = "weight-of-object";
     circle.style.left = `${object.x}px`;
+    
+    const size = object.weight * 3 + 30;
+    circle.style.width = `${size}px`;
+    circle.style.height = `${size}px`;
     circle.innerText = object.weight;
     plank.appendChild(circle);
-    calculateTorque();
-}
+    calculateTorque();}
+    
+
 function calculateTorque() {
     let torqueLeft = 0;
     let torqueRight = 0;

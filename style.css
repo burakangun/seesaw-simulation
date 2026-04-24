@@ -1,30 +1,30 @@
 .simulation-container {
     position:relative;
     width: 800px;
-    height: 600px;
-    margin: 100px auto;
+    height: 800px;
+    margin: 100px auto;   
 }
 
 #pivot {
     position: absolute;
-    bottom: 0;
+    bottom: 24%;
     left: 50%;
     transform: translateX(-50%);
-    border-radius:20px;
+    border-radius:30px;
     width: 20px;
     height: 50px;
-    background: gray;
+    background: black;
     border-radius: 4px 4px 0 0;
 }
 
 #plank {
     position:absolute;
-    bottom:50px;
+    bottom:30%;
     left:50%;
     border-radius:20px;;
     transform:translateX(-50%);
     width:800px;
-    height:10px;
+    height:20px;
     background:blue;
 }
 
@@ -48,10 +48,10 @@
     display:flex;
     justify-content: space-around;
     padding: 10px;
-    background-color: green;
+    background-color: #6030b0 ;
     border-radius: 8px;
-    margin-bottom:20px;
-    font-size: 20px;
+    margin-bottom:1px;
+    font-size: 22px;
 }
 
 #reset-btn{
@@ -89,10 +89,9 @@
     padding:10px;
     display:flex;
     justify-content: space-around;
-    font-size: 20px;
-    background-color:chocolate;
+    font-size: 22px;
+    background-color:#6a3aad;
     border-radius:8px;
-    margin-top:20px;
 }
 body {
     background: #505899;
